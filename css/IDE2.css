@@ -1,0 +1,35 @@
+
+
+        /* Estilos CSS para a área de código */
+        #code-editor {
+            width: 100%;
+            height: 300px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            line-height: 1.4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #2B2B2B;
+            color: #D4D4D4;
+            caret-color: #D4D4D4;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        /* Estilos CSS para o botão */
+        #run-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #run-button:hover {
+            background-color: #45a049;
+        }

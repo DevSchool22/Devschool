@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <title>Perfil</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script>
+        $(document).ready(function () {
+            // Carrega a página inicial ao carregar o site
+            $('.content').load('home.php');
+
+            // Ao clicar em um item da navbar
+            $('.navbar-item').on('click', function (e) {
+                e.preventDefault(); // Previne a ação padrão do link
+                var page = $(this).data('page'); // Obtém o valor do atributo "data-page"
+                $('.content').load(page); // Carrega o conteúdo da página correspondente
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="css/IDE.css">
+    <link rel="stylesheet" href="css/IDE2.css">
+</head>
+
+<body>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-storage.js"></script>
+
+    <div class="wrapper d-flex align-items-stretch">
+
+        <!-- BARRA LATERAL -->
+        <nav id="sidebar" class="active">
+            <div style="position:fixed">
+
+                <h1><a href="index.html" class="logo"><img src="images/LOGODEV.png" width="70" height="70" alt=""></a>
+                </h1>
+                <ul class=" list-unstyled components mb-5">
+                    <li class="active">
+                        <a class="navbar-item" href="#" data-page="home.php"><span class="fa fa-home"></span>
+                            Novidades</a>
+                    </li>
+                    <li>
+                        <a class="navbar-item" href="#" data-page="perfil.php"><span class="fa fa-user"></span>
+                            Perfil</a>
+                    </li>
+                    <li>
+                        <a class="navbar-item" href="#" data-page="Estudo.php"><span class="fa fa-sticky-note"></span>
+                            Curso</a>
+                    </li>
+                    <li>
+                        <a class="navbar-item" href="#" data-page="config.php"><span class="fa fa-cogs"></span>
+                            Config</a>
+                    </li>
+                    <li>
+                        <a class="navbar-item" href="#" data-page="ajuda.php"><span class="fa fa-paper-plane"></span>
+                            Ajuda</a>
+                    </li>
+                </ul>
+
+                <div class="footer">
+                    <p>
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is
+                        made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib.com</a>
+                    </p>
+                </div>
+
+            </div>
+        </nav>
+
+        <div id="content" class="p-4 p-md-5">
+
+            <!-- NAVBAR -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+
+                    <li class=" d-block d-sm-none nav-item dropdown">
+                        <a class="navbar-toggler" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="assets/imagem/Profile-Avatar-PNG-Picture.png" alt="Profile" class="rounded-circle"
+                                width="30" height="30">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
+                            <li><a class="dropdown-item" href="#">Configurações</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" onclick="sair()">Sair</a></li>
+                        </ul>
+                    </li>
+                    <div class="collapse navbar-collapse " id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="assets/imagem/Profile-Avatar-PNG-Picture.png" alt="Profile"
+                                        class="rounded-circle" width="30" height="30">
+                                    <span id="usuario" class="ms-2"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
+                                    <li><a class="dropdown-item" href="#">Configurações</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" onclick="sair()">Sair</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- CONTEUDO PHP -->
+
+            <main class="content">
+
+
+                <!-- NAV BAR  -->
+                <div id="content" class="p-4 p-md-5">
+
+
+                    <!-- CONTEUDO  -->
+                    <div class="row">
+                        <div class="col-md-8 order-md-1 col-12 order-2">
+                            <div class="d-flex flex-column">
+                                <div
+                                    class="d-flex justify-content-between align-items-baseline flex-wrap flex-md-nowrap gap-2">
+                                    <div class="d-flex flex-wrap align-items-baseline">
+                                        <h1 data-cy="curriculum-header" class="h2 mb-0 mr-2"> Planos de estudo </h1>
+                                        <!---->
+                                    </div><!----><a href="/study-plan/history" class="btn text-black p-0 btn-link"
+                                        click-event-part="curriculum" click-event-target="history"
+                                        click-event-route="/study-plan" target="_self" data-component-name="BLink"><svg
+                                            viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img"
+                                            aria-label="clock history" xmlns="http://www.w3.org/2000/svg"
+                                            fill="currentColor" class="bi-clock-history mr-1 b-icon bi">
+                                            <g transform="translate(8 8) scale(0.8 0.8) translate(-8 -8)">
+                                                <path
+                                                    d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z">
+                                                </path>
+                                                <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z">
+                                                </path>
+                                                <path
+                                                    d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z">
+                                                </path>
+                                            </g>
+                                        </svg><span>Historico</span></a>
+                                </div> <br>
+                            </div>
+
+                            <div class="container">
+
+
+
+                                <div class="container">
+                                    <h1>Prova de HTML</h1>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div id="etapa1">
+                                        <h2>Etapa 1</h2>
+                                        <p>Questão 1: Qual é a tag utilizada para criar títulos em HTML?</p>
+                                        <input type="radio" name="questao1" value="a"> a) &lt;h1&gt;<br>
+                                        <input type="radio" name="questao1" value="b"> b) &lt;p&gt;<br>
+                                        <input type="radio" name="questao1" value="c"> c) &lt;title&gt;<br>
+                                        <input type="radio" name="questao1" value="d"> d) &lt;head&gt;<br>
+                                        <button onclick="avancarEtapa(2)">Avançar</button>
+                                    </div>
+                                    <div id="etapa2" style="display: none;">
+                                        <h2>Etapa 2</h2>
+                                        <p>Questão 2: Qual tag é usada para criar um link em HTML?</p>
+                                        <input type="radio" name="questao2" value="a"> a) &lt;img&gt;<br>
+                                        <input type="radio" name="questao2" value="b"> b) &lt;a&gt;<br>
+                                        <input type="radio" name="questao2" value="c"> c) &lt;link&gt;<br>
+                                        <input type="radio" name="questao2" value="d"> d) &lt;ul&gt;<br>
+                                        <button onclick="avancarEtapa(3)">Avançar</button>
+                                    </div>
+                                    <div id="etapa3" style="display: none;">
+                                        <h2>Etapa 3</h2>
+                                        <p>Questão 3: Como inserir uma imagem em uma página HTML?</p>
+                                        <input type="radio" name="questao3" value="a"> a) &lt;image
+                                        src="caminho/para/imagem.jpg"&gt;<br>
+                                        <input type="radio" name="questao3" value="b"> b) &lt;img
+                                        src="caminho/para/imagem.jpg" alt="Descrição da imagem"&gt;<br>
+                                        <input type="radio" name="questao3" value="c"> c) &lt;image
+                                        href="caminho/para/imagem.jpg" alt="Descrição da imagem"&gt;<br>
+                                        <input type="radio" name="questao3" value="d"> d) &lt;img
+                                        href="caminho/para/imagem.jpg" alt="Descrição da imagem"&gt;<br>
+                                        <button onclick="avancarEtapa(4)">Avançar</button>
+                                    </div>
+                                    <div id="etapa4" style="display: none;">
+                                        <h2>Etapa 4</h2>
+                                        <p>Questão 4: Quais são os elementos básicos da estrutura de um documento HTML?
+                                        </p>
+                                        <input type="radio" name="questao4" value="a"> a) &lt;html&gt;, &lt;head&gt;,
+                                        &lt;body&gt;<br>
+                                        <input type="radio" name="questao4" value="b"> b) &lt;title&gt;, &lt;h1&gt;,
+                                        &lt;p&gt;<br>
+                                        <input type="radio" name="questao4" value="c"> c) &lt;img&gt;, &lt;a&gt;,
+                                        &lt;ul&gt;<br>
+                                        <input type="radio" name="questao4" value="d"> d) &lt;header&gt;, &lt;main&gt;,
+                                        &lt;footer&gt;<br>
+                                        <button onclick="avancarEtapa(5)">Concluir Prova</button>
+                                    </div>
+                                    <div id="etapa5" style="display: none;">
+                                            
+                                            <div id="code-editor" contenteditable="true">
+                                                <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Ambiente IDE&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                                            </div>
+                                            <button id="run-button" onclick="runCode()">Executar</button>
+
+                                            <script>
+                                                function compareTexts() {
+                                                    var text1 = document.getElementById("code-editor").textContent.trim(); // Texto da caixa de texto
+                                                    var text2 = `<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Ambiente IDE</title>
+</head>
+<body>
+    <h1>Olá mundo</h1>
+</body>
+</html>`; // Segunda variável de texto (você pode alterar esse valor)
+
+                                                    var similarity = calculateSimilarity(text1, text2);
+                                                    alert("Porcentagem de similaridade: " + similarity + "%"); // Exibe a porcentagem de similaridade no console (você pode modificar essa linha conforme necessário)
+                                                }
+
+                                                function calculateSimilarity(text1, text2) {
+                                                    var longerText = text1.length > text2.length ? text1 : text2;
+                                                    var shorterText = text1.length > text2.length ? text2 : text1;
+                                                    var longerLength = longerText.length;
+
+                                                    if (longerLength === 0) {
+                                                        return 100; // Ambos os textos estão vazios, considerados 100% similares
+                                                    }
+
+                                                    var similarity = (longerLength - getEditDistance(longerText, shorterText)) / parseFloat(longerLength) * 100;
+                                                    return similarity.toFixed(2);
+                                                }
+
+                                                function getEditDistance(text1, text2) {
+                                                    text1 = text1.toLowerCase();
+                                                    text2 = text2.toLowerCase();
+
+                                                    var matrix = [];
+                                                    var n = text1.length;
+                                                    var m = text2.length;
+
+                                                    if (n === 0) {
+                                                        return m;
+                                                    }
+
+                                                    if (m === 0) {
+                                                        return n;
+                                                    }
+
+                                                    for (var i = 0; i <= n; i++) {
+                                                        matrix[i] = [i];
+                                                    }
+
+                                                    for (var j = 0; j <= m; j++) {
+                                                        matrix[0][j] = j;
+                                                    }
+
+                                                    for (var i = 1; i <= n; i++) {
+                                                        for (var j = 1; j <= m; j++) {
+                                                            if (text1.charAt(i - 1) === text2.charAt(j - 1)) {
+                                                                matrix[i][j] = matrix[i - 1][j - 1];
+                                                            } else {
+                                                                matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, // Substituição
+                                                                    matrix[i][j - 1] + 1,     // Inserção
+                                                                    matrix[i - 1][j] + 1);    // Deleção
+                                                            }
+                                                        }
+                                                    }
+
+                                                    return matrix[n][m];
+                                                }
+
+                                                function runCode() {
+                                                    compareTexts();
+                                                }
+                                            </script>
+
+                                    </div>
+                                </div>
+
+                                <!-- Adicione os arquivos JavaScript do Bootstrap -->
+                                <script
+                                    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                                <script>
+                                    let etapaAtual = 1;
+                                    const totalEtapas = 5;
+                                    const progresso = document.querySelector('.progress-bar');
+
+                                    function avancarEtapa(etapa) {
+                                        document.getElementById(`etapa${etapaAtual}`).style.display = 'none';
+                                        document.getElementById(`etapa${etapa}`).style.display = 'block';
+                                        etapaAtual = etapa;
+                                        atualizarProgresso();
+                                    }
+
+                                    function concluirProva() {
+                                        alert('Prova concluída! Parabéns!');
+                                        // Aqui você pode adicionar ações adicionais ao concluir a prova
+                                    }
+
+                                    function atualizarProgresso() {
+                                        const porcentagem = (etapaAtual / totalEtapas) * 100;
+                                        progresso.style.width = `${porcentagem}%`;
+                                        progresso.setAttribute('aria-valuenow', porcentagem);
+                                        progresso.innerText = `${porcentagem}%`;
+                                    }
+                                </script>
+                            </div>
+
+                            <script>
+                                // seleciona todos os botões das aulas
+                                const botoesAula = document.querySelectorAll('ul.list-group button');
+
+                                // adiciona um evento de clique em cada botão
+                                botoesAula.forEach((botao, indice) => {
+                                    botao.addEventListener('click', () => {
+                                        // verifica se a aula atual é a primeira
+                                        if (indice === 0) {
+                                            // habilita o botão da próxima aula
+                                            botoesAula[1].classList.remove('disabled');
+                                        } else {
+                                            // verifica se a aula anterior já foi concluída
+                                            if (!botoesAula[indice - 1].classList.contains('disabled')) {
+                                                // habilita o botão da próxima aula
+                                                if (indice < botoesAula.length - 1) {
+                                                    botoesAula[indice + 1].classList.remove('disabled');
+                                                }
+                                            }
+                                        }
+                                    });
+                                });
+
+                            </script>
+
+                            <script src="js/jquery.min.js"></script>
+                            <script src="js/popper.js"></script>
+                            <script src="js/bootstrap.min.js"></script>
+                            <script src="js/main.js"></script>
+
+                        </div>
+
+                    </div>
+
+                </div>
+        </div>
+        </main>
+
+    </div>
+    </div>
+    <script src="js/firebaseconfig.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Login e Cadastro com Firebase</title>
+    <link rel="stylesheet" href="assets/css/cssLogin/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+       
+        <!-- Firebase SDK -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    
+   
+</head>
+
+<body>
+    <div class="container">
+        <div class="content first-content">
+            <div class="first-column"> <img class="title title-primary" src="images/Logo.png" alt="" width="180px">
+                <h2 class="title title-primary">Bem-vindo de volta!</h2>
+                <p class="description description-primary">Acesse sua conta agora mesmo</p> <button id="signin"
+                    class="btn btn-primary">Entrar</button>
+            </div>
+            <div class="second-column">
+                <h2 class="title title-second">Crie sua conta</h2>
+                <div class="social-media">
+                    <ul class="list-social-media"> <a class="link-social-media" href="#">
+                            <li class="item-social-media"> <i class="fab fa-facebook-f"></i> </li>
+                        </a> <a class="link-social-media" href="#">
+                            <li class="item-social-media"> <i class="fab fa-google-plus-g"></i> </li>
+                        </a> <a class="link-social-media" href="#">
+                            <li class="item-social-media"> <i class="fab fa-linkedin-in"></i> </li>
+                        </a> </ul>
+                </div><!-- social media -->
+                <p class="description description-second">Preencha seu cadastro:</p>
+                <form id="form_cadastro"> 
+                    <label class="label-input"> <i class="far fa-user icon-modify"></i> 
+                        <input class="input-padding" type="text" placeholder=" Usuário" id="usuario" required> 
+                    </label> 
+                    <label class="label-input" > <i class="far fa-envelope icon-modify"></i> 
+                        <input class="input-padding" type="email" placeholder=" Email" id="email" required> 
+                    </label> 
+                    <label class="label-input"> <i class="fas fa-lock icon-modify"></i> 
+                        <input class="input-padding" type="password" placeholder=" Senha" id="senha" required> 
+                    </label> 
+                    <button class="btn btn-second" type="submit" >sign up</button> 
+                    
+                </form>
+            </div><!-- second column -->
+        </div><!-- first content -->
+        <div class="content second-content">
+            <div class="first-column"> <img class="title title-primary" src="images/Logo.png" alt="" width="180px">
+                <h2 class="title title-primary">Olá, futuros Devs!</h2>
+                <p class="description description-primary">Insira seus dados pessoais</p>
+                <p class="description description-primary">Comece a sua nova jornada conosco</p> <button id="signup"
+                    class="btn btn-primary">Crie sua conta</button>
+            </div>
+            <div class="second-column">
+                <h2 class="title title-second">Login</h2>
+                <div class="social-media">
+                    <ul class="list-social-media"> <a class="link-social-media" href="#">
+                            <li class="item-social-media"> <i class="fab fa-facebook-f"></i> </li>
+                        </a> <a class="link-social-media" href="#">
+                            <li class="item-social-media"> <i class="fab fa-google-plus-g"></i> </li>
+                        </a> <a class="link-social-media" href="#">
+                            <li class="item-social-media"> <i class="fab fa-linkedin-in"></i> </li>
+                        </a> </ul>
+
+
+
+                </div><!-- social media -->
+                <p class="description description-second">Ou acesse com seu e-mail</p>
+                <form id="form_login"> 
+                    <label class="label-input" > <i class="far fa-envelope icon-modify"></i>
+                        <input class="input-padding"  placeholder=" Usuario" id="UsuarioLogin" required> 
+                    </label> <label class="label-input"> <i
+                            class="fas fa-lock icon-modify"></i> <input class="input-padding" type="password" placeholder="Senha" id="senhaLogin" required>
+                    </label> <a class="password" href="#">Esqueceu sua
+                        senha?</a> 
+                        
+                    <button class="btn btn-second" type="submit" >sing in</button> 
+                    
+                </form>
+            </div><!-- second column -->
+        </div><!-- second-content -->
+    </div>
+    <!-- Configuração do Firebase -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBN6ShVusuGzpGp2QL07ZzPeZLrj_1LFRo",
+            authDomain: "devschool22-a29b2.firebaseapp.com",
+            projectId: "devschool22-a29b2",
+            storageBucket: "devschool22-a29b2.appspot.com",
+            messagingSenderId: "1000163958973",
+            appId: "1:1000163958973:web:616ae34bb13c2b9d7057d4"
+        };
+        firebase.initializeApp(firebaseConfig);
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+    </script>
+
+    <!-- Script para autenticar e cadastrar usuários -->
+    <script>
+
+        document.getElementById("form_cadastro").addEventListener("submit", cadastrarUsuario);
+        document.getElementById("form_login").addEventListener("submit", autenticarUsuario);
+ 
+        const db = firebase.firestore();
+
+        function cadastrarUsuario(event) {
+            event.preventDefault();
+            const usuario = document.getElementById("usuario").value;
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+
+            firebase.auth().createUserWithEmailAndPassword(email, senha)
+                .then((userCredential) => {
+                    const uid = userCredential.user.uid;
+                    db.collection("usuarios").add({
+                        usuario: usuario,
+                        email: email,
+                        senha: senha,
+                        uid: uid
+                    })
+                        .then((docRef) => {
+                            alert("Usuário cadastrado com sucesso. Documento:", docRef.id);
+                        })
+                        .catch((error) => {
+                            console.error("Erro ao cadastrar usuário:", error);
+                        });
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+
+        function autenticarUsuario(event) {
+            event.preventDefault();
+            const usuario = document.getElementById("UsuarioLogin").value;
+            const senha = document.getElementById("senhaLogin").value;
+
+            db.collection("usuarios").where("usuario", "==", usuario).get()
+                .then((querySnapshot) => {
+                    if (querySnapshot.size === 1) {
+                        const usuarioDoc = querySnapshot.docs[0];
+                        if (usuarioDoc.data().senha === senha) {
+                            firebase.auth().signInWithEmailAndPassword(usuarioDoc.data().email, senha)
+                                .then((userCredential) => {
+                                    const uid = userCredential.user.uid;
+                                    const docRef = db.collection("usuarios").doc(usuarioDoc.id);
+
+                                    docRef.update({
+                                        uid: uid
+                                    })
+                                        .then(() => {
+                                            alert("Usuário autenticado. Documento:", usuarioDoc.id);
+                                            localStorage.setItem("uid", uid);
+                                            localStorage.setItem("docId", usuarioDoc.id); // adiciona a key do firestore no localStorage
+                                            window.location.href = "dashboard.php";
+                                        })
+                                        .catch((error) => {
+                                            console.error("Erro ao atualizar documento do usuário:", error);
+                                        });
+
+
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                });
+                        } else {
+                            console.error("Senha incorreta");
+                        }
+                    } else {
+                        console.error("Usuário não encontrado");
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+
+
+        // Adicionar listeners aos formulários
+         </script>
+
+
+    <script src="js/jsLoginCadastro/app.js"></script>
+</body>
+
+</html>
