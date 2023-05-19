@@ -1,0 +1,163 @@
+<?php
+    // Define o título da página atual
+    $pageTitle = "Pagina Iniial";
+    include 'header.php';
+    include 'navbar.php';
+?>
+<!-- CONTEUDO  -->
+<div class="row">
+    <div class="col-md-8 order-md-1 col-12 order-2">
+        <div class="d-flex flex-column">
+            <div
+                class="d-flex justify-content-between align-items-baseline flex-wrap flex-md-nowrap gap-2">
+                <div class="d-flex flex-wrap align-items-baseline">
+                    <h1 data-cy="curriculum-header" class="h2 mb-0 mr-2"> Planos de estudo </h1>
+                    <!---->
+                </div><!----><a href="/study-plan/history" class="btn text-black p-0 btn-link"
+                    click-event-part="curriculum" click-event-target="history"
+                    click-event-route="/study-plan" target="_self" data-component-name="BLink"><svg
+                        viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img"
+                        aria-label="clock history" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" class="bi-clock-history mr-1 b-icon bi">
+                        <g transform="translate(8 8) scale(0.8 0.8) translate(-8 -8)">
+                            <path
+                                d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z">
+                            </path>
+                            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z">
+                            </path>
+                            <path
+                                d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z">
+                            </path>
+                        </g>
+                    </svg><span>Historico</span></a>
+            </div> <br>
+        </div>
+
+        <div class="container">
+        
+
+<div class="markdown prose w-full break-words dark:prose-invert dark">
+<p>Claro! Vou te guiar em uma aula básica de HTML, explicando os principais conceitos para criar
+uma página simples. Vamos lá!</p>
+<p>HTML, que significa HyperText Markup Language, é a linguagem padrão para a criação de páginas
+da web. Ela utiliza uma série de elementos e tags para estruturar e organizar o conteúdo de
+uma página. Vou te mostrar os conceitos fundamentais para começar:</p>
+<ol>
+<li>Estrutura básica do documento:</li>
+</ol>
+<pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between 
+rounded-t-md"><span>html</span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Título da página<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- Aqui vai o conteúdo da página --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></div></div></pre>
+<p>Neste exemplo, temos a estrutura básica de um documento HTML. O
+<code>&lt;!DOCTYPE html&gt;</code> define a versão do HTML utilizada,
+<code>&lt;html&gt;</code> é o elemento raiz do documento, <code>&lt;head&gt;</code> é a
+seção de cabeçalho onde colocamos informações sobre a página, como o título exibido na aba
+do navegador, e <code>&lt;body&gt;</code> é onde colocamos o conteúdo principal da página.
+</p>
+<ol start="2">
+<li>Títulos e parágrafos:</li>
+</ol>
+<pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>html</span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Título<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Texto do parágrafo.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></div></div></pre>
+<p>Os títulos são utilizados para definir a hierarquia do conteúdo. Temos os títulos de
+<code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>, sendo <code>&lt;h1&gt;</code> o título
+mais importante e <code>&lt;h6&gt;</code> o menos importante. Os parágrafos são criados com
+a tag <code>&lt;p&gt;</code>.
+</p>
+<ol start="3">
+<li>Links:</li>
+</ol>
+<pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>html</span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.example.com"</span>&gt;</span>Texto do link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></div></div></pre>
+<p>Os links são criados com a tag <code>&lt;a&gt;</code>. O atributo <code>href</code> define o
+destino do link, que pode ser uma página externa ou um arquivo local.</p>
+<ol start="4">
+<li>Imagens:</li>
+</ol>
+<pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>html</span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"caminho/para/imagem.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Descrição da imagem"</span>&gt;</span>
+</code></div></div></pre>
+<p>As imagens são inseridas utilizando a tag <code>&lt;img&gt;</code>. O atributo
+<code>src</code> especifica o caminho para a imagem e o atributo <code>alt</code> fornece
+uma descrição da imagem para acessibilidade.
+</p>
+<ol start="5">
+<li>Listas:</li>
+</ol>
+<pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>html</span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Item 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Item 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Item 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Item 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+</code></div></div></pre>
+<p>As listas não ordenadas são criadas com a tag <code>&lt;ul&gt;</code>, e cada item da lista é
+representado pela tag <code>&lt;li&gt;</code>. Já as listas ordenadas são criadas com a tag
+<code>&lt;ol&gt;</code>.
+</p>
+<p>Esses são apenas alguns dos conceitos básicos do HTML. Com esses elementos, você já pode
+criar uma página simples. Lembre-se de sempre fechar as tags corretamente e de respeitar a
+estrutura do documento HTML.</p>
+<p>Espero que esta aula básica de HTML tenha sido útil para você começar a criar suas páginas da
+web! Se tiver mais dúvidas, estou aqui para ajudar.</p>
+</div> 
+        </div>
+
+        <script>
+            // seleciona todos os botões das aulas
+            const botoesAula = document.querySelectorAll('ul.list-group button');
+
+            // adiciona um evento de clique em cada botão
+            botoesAula.forEach((botao, indice) => {
+                botao.addEventListener('click', () => {
+                    // verifica se a aula atual é a primeira
+                    if (indice === 0) {
+                        // habilita o botão da próxima aula
+                        botoesAula[1].classList.remove('disabled');
+                    } else {
+                        // verifica se a aula anterior já foi concluída
+                        if (!botoesAula[indice - 1].classList.contains('disabled')) {
+                            // habilita o botão da próxima aula
+                            if (indice < botoesAula.length - 1) {
+                                botoesAula[indice + 1].classList.remove('disabled');
+                            }
+                        }
+                    }
+                });
+            });
+
+        </script>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+
+    </div>
+
+</div>
+
+</div>
+</div>
+</main>
+
+</div>
+</div>
+<script src="js/firebaseconfig.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+
+</html>
